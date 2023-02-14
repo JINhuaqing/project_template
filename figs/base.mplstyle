@@ -10,7 +10,7 @@ legend.fontsize: 25
 axes.labelsize : 25
 
 # fig
-figure.figsize: 10.0, 10.0
+figure.figsize: 10.0, 5.0
 figure.dpi: 100
 figure.subplot.wspace: 0.4
 figure.subplot.hspace: 0.4
