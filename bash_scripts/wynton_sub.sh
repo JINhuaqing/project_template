@@ -20,7 +20,7 @@
 #### job requires up to 2 GB local space
 #$ -l scratch=2G
 #### Specify queue
-###  gpu.q for using gpu
+###  gpu.q for using gpu, sometimes, long.q can run GPU
 ###  if not gpu.q, do not need to specify it
 #$ -q gpu.q 
 #### The GPU memory required, in MiB
