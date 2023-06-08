@@ -4,8 +4,9 @@
 #### Job memory request
 #SBATCH --mem=200gb                  
 #SBATCH --nodes=1
-#### Num of cores required
-#SBATCH --ntasks=30
+#### Num of cores required, I think I should use --cpus-per-task other than --ntasks
+#SBATCH --cpus-per-task=30
+#####SBATCH --ntasks=30
 #### Run on partition "dgx" (e.g. not the default partition called "long")
 ### long for CPU, gpu/dgx for CPU, dgx is slow
 #SBATCH --partition=gpu                    
