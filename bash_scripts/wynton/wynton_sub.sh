@@ -1,16 +1,16 @@
 #!/bin/bash
-#### The job script, run it as qsub xxx.sh job.sh
+#### The job script, run it as qsub wynton_sub.sh
 
 #### the shell language when run via the job scheduler [IMPORTANT]
 #$ -S /bin/bash
 #### job should run in the current working directory
-#$ -cwd
-#### Specify job name
-#$ -N wake_R
+####$ -cwd
+##### set job working directory
+#$ -wd  /path/to/bash_scripts/
 #### Output file
-#$ -o $JOB_NAME_$JOB_ID.out
+#$ -o wynton/logs/Realdata_$JOB_NAME_$JOB_ID.out
 #### Error file
-#$ -e $JOB_NAME_$JOB_ID.err
+#$ -e wynton/logs/Realdata_$JOB_NAME_$JOB_ID.err
 #### memory per core
 #$ -l mem_free=2G
 #### number of cores 
@@ -25,5 +25,10 @@
 #$ -q gpu.q 
 #### The GPU memory required, in MiB
 ### #$ -l gpu_mem=12000M
+#### Specify job name
+#$ -N wake_R
 
-bash $1
+#Your script
+
+#### End-of-job summary, if running as a job
+[[ -n "$JOB_ID" ]] && qstat -j "$JOB_ID"

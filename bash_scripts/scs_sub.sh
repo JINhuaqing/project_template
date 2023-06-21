@@ -1,5 +1,5 @@
 #!/bin/bash
-#### sbatch scs_sub.sh job.sh to submit the job
+#### sbatch scs_sub.sh to submit the job
 
 #### Job memory request
 #SBATCH --mem=200gb                  
@@ -19,5 +19,4 @@
 #### You job
 echo "Running prime number generator program on $SLURM_CPUS_ON_NODE CPU cores"
 
-bash $1
 
