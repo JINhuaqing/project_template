@@ -12,9 +12,11 @@
 #SBATCH --partition=gpu                    
 #### Allocate 1 GPU resource for this job. 
 #SBATCH --gres=gpu:teslav100:1   
-#SBATCH --output=logs/largemodel-%x.out
+#SBATCH --output=scs/logs/prefix-%x-%j.out
 #SBATCH -J (job_name)
+#SBATCH --chdir=/you path/bash_scripts/
 
+(some job)
 
 #### You job
 echo "Running prime number generator program on $SLURM_CPUS_ON_NODE CPU cores"
