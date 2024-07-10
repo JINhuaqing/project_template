@@ -1,6 +1,38 @@
 import numpy as np
 import pickle
 from easydict import EasyDict as edict
+import logging
+
+def _set_verbose_level(verbose, logger):
+    """Set the verbose level of logger
+    """
+    if verbose == 0:
+        verbose_lv = logging.ERROR
+    elif verbose == 1:
+        verbose_lv = logging.WARNING
+    elif verbose == 2:
+        verbose_lv = logging.INFO
+    elif verbose == 3:
+        verbose_lv = logging.DEBUG
+    if len(logger.handlers)>0:
+        logger.handlers[0].setLevel(verbose_lv)
+    else:
+        logger.setLevel(verbose_lv)
+
+def _update_params(input_params, def_params, logger):
+    """Update the default parameters with input parameters
+    args: 
+        - input_params (dict): the input parameters
+        - def_params (dict): the default parameters
+        - logger (logging.Logger): the logger
+    """
+    for ky, v in input_params.items():
+        if ky not in def_params.keys():
+            logger.warning(f"Check your input, {ky} is not used.")
+        else:
+            if v is not None:
+                def_params[ky] = v
+    return edict(def_params)
 
 
 def load_pkl_folder2dict(folder, excluding=[], including=["*"], verbose=True):
