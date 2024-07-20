@@ -19,15 +19,16 @@ def _set_verbose_level(verbose, logger):
     else:
         logger.setLevel(verbose_lv)
 
-def _update_params(input_params, def_params, logger):
+def _update_params(input_params, def_params, logger, check_ky=True):
     """Update the default parameters with input parameters
     args: 
         - input_params (dict): the input parameters
         - def_params (dict): the default parameters
         - logger (logging.Logger): the logger
+        - check_ky (bool): whether to check the keys or not 
     """
     for ky, v in input_params.items():
-        if ky not in def_params.keys():
+        if ky not in def_params.keys() and check_ky:
             logger.warning(f"Check your input, {ky} is not used.")
         else:
             if v is not None:
